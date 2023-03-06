@@ -1,0 +1,100 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/icone.ico" type="image/x-icon">
+    <title>Som de Fundo</title>
+    <style>
+        div {
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 70px;
+            opacity: 50%;
+            
+        }
+        audio {
+            display: none;
+        }
+        .range {
+            width: 70px;
+            display: none;
+        }
+        #chuvabotao {
+            background-image: url(imagens/chuva.png);
+        }
+        #ventobotao {
+            background-image: url(imagens/vento.png);
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="chuvabotao">
+    </div>
+    <input type="range" id="chuvarange" class="range">
+
+    <div id="ventobotao">
+    </div>
+    <input type="range" id="ventorange" class="range">
+    <audio 
+        id="chuva" 
+        src="audios/rain.mp3" 
+        controls="controls" 
+        loop="loop" 
+        autoplay="autoplay" 
+        muted="muted">
+    </audio>
+    <audio 
+        id="vento" 
+        src="audios/wind.mp3" 
+        controls="controls" 
+        loop="loop" 
+        autoplay="autoplay" 
+        muted="muted">
+    </audio>
+
+    <script>
+        // declaração de variáveis
+        var botao = document.querySelector("#chuvabotao");
+        var chuva = document.querySelector("#chuva");
+        var botaovento = document.querySelector("#ventobotao");
+        var vento = document.querySelector("#vento");
+
+        // evento de click
+        document.addEventListener('click', e => {
+            if (e.target == botao) {
+                if (chuva.muted == false) {
+                    chuva.muted = true;
+                    botao.style.opacity = "50%";
+                    chuvarange.style.display = 'none';
+                }
+                else {
+                    chuva.muted = false;
+                    botao.style.opacity = "100%";
+                    chuvarange.style.display = 'block';
+                }
+            }
+            if (e.target == botaovento) {
+                if (vento.muted == false) {
+                    vento.muted = true;
+                    botaovento.style.opacity = "50%";
+                    ventorange.style.display = 'none';
+                }
+                else {
+                    vento.muted = false;
+                    botaovento.style.opacity = "100%";
+                    ventorange.style.display = 'block';
+                }
+            }
+        })
+
+        // evento de volume
+        document.addEventListener('mousemove', e=> {
+            chuva.volume = chuvarange.value/100;
+            vento.volume = ventorange.value/100;
+        })
+    </script>
+</body>
+</html>
