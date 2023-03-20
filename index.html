@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -5,96 +6,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="imagens/icone.ico" type="image/x-icon">
     <title>Som de Fundo</title>
-    <style>
-        div {
-            background-size: contain;
-            background-repeat: no-repeat;
-            width: 70px;
-            height: 70px;
-            opacity: 50%;
-            
-        }
-        audio {
-            display: none;
-        }
-        .range {
-            width: 70px;
-            display: none;
-        }
-        #chuvabotao {
-            background-image: url(imagens/chuva.png);
-        }
-        #ventobotao {
-            background-image: url(imagens/vento.png);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" media="all">
+    <script src="script.js"></script>
 </head>
 <body>
-    
-    <div id="chuvabotao">
-    </div>
-    <input type="range" id="chuvarange" class="range">
-
-    <div id="ventobotao">
-    </div>
-    <input type="range" id="ventorange" class="range">
-    <audio 
-        id="chuva" 
-        src="audios/rain.mp3" 
-        controls="controls" 
-        loop="loop" 
-        autoplay="autoplay" 
-        muted="muted">
-    </audio>
-    <audio 
-        id="vento" 
-        src="audios/wind.mp3" 
-        controls="controls" 
-        loop="loop" 
-        autoplay="autoplay" 
-        muted="muted">
-    </audio>
-
+    <header>
+        <h1>Sente e Relaxe</h1>
+    </header>
+    <main>
+        <section id="botoes">
+            <article></article>
+            <article>
+                <div id="chuvabotao"></div>
+                <input type="range" id="chuvarange" class="range">
+            </article>
+            <article>
+                <div id="ventobotao"></div>
+                <input type="range" id="ventorange" class="range">
+            </article>
+            <article></article>
+            <article></article>
+            <article>
+                <div id="ondasbotao"></div>
+                <input type="range" id="ondasrange" class="range">
+            </article>
+            <article>
+                <div id="trovaobotao"></div>
+                <input type="range" id="trovaorange" class="range">
+            </article>
+            <article></article>
+        </section>
+        <section id="entradadeaudio">
+                <audio 
+                    id="chuva" 
+                    src="audios/chuva.mp3" 
+                    controls="controls" 
+                    loop="loop" 
+                    autoplay="autoplay" 
+                    muted="muted">
+                </audio>
+                <audio 
+                    id="vento" 
+                    src="audios/vento.mp3" 
+                    controls="controls" 
+                    loop="loop" 
+                    autoplay="autoplay" 
+                    muted="muted">
+                </audio>
+                <audio 
+                    id="ondas" 
+                    src="audios/ondas.mp3" 
+                    controls="controls" 
+                    loop="loop" 
+                    autoplay="autoplay" 
+                    muted="muted">
+                </audio>
+                <audio 
+                    id="trovao" 
+                    src="audios/trovao.mp3" 
+                    controls="controls" 
+                    loop="loop" 
+                    autoplay="autoplay" 
+                    muted="muted">
+                </audio>
+        </section>
+    </main>
     <script>
-        // declaração de variáveis
-        var botao = document.querySelector("#chuvabotao");
-        var chuva = document.querySelector("#chuva");
-        var botaovento = document.querySelector("#ventobotao");
-        var vento = document.querySelector("#vento");
+// declaração de variáveis
+var chuvabotao = document.querySelector("#chuvabotao");
+var chuva = document.querySelector('audio#chuva');
+var ventobotao = document.querySelector("#ventobotao");
+var vento = document.querySelector("#vento");
+var ondasbotao = document.querySelector('#ondasbotao');
+var ondas = document.querySelector('#ondas');
+var trovaobotao = document.querySelector('#trovaobotao');
+var trovao = document.querySelector('#trovao');
 
-        // evento de click
-        document.addEventListener('click', e => {
-            if (e.target == botao) {
-                if (chuva.muted == false) {
-                    chuva.muted = true;
-                    botao.style.opacity = "50%";
-                    chuvarange.style.display = 'none';
-                }
-                else {
-                    chuva.muted = false;
-                    botao.style.opacity = "100%";
-                    chuvarange.style.display = 'block';
-                }
-            }
-            if (e.target == botaovento) {
-                if (vento.muted == false) {
-                    vento.muted = true;
-                    botaovento.style.opacity = "50%";
-                    ventorange.style.display = 'none';
-                }
-                else {
-                    vento.muted = false;
-                    botaovento.style.opacity = "100%";
-                    ventorange.style.display = 'block';
-                }
-            }
-        })
+console.log(chuva, chuvabotao);
 
-        // evento de volume
-        document.addEventListener('mousemove', e=> {
-            chuva.volume = chuvarange.value/100;
-            vento.volume = ventorange.value/100;
-        })
+// evento de click
+document.addEventListener('click', e => {
+    if (e.target == chuvabotao) {
+        if (chuva.muted == false) {
+            chuva.muted = true;
+            chuvabotao.style.opacity = "50%";
+            chuvarange.style.display = 'none';
+        }
+        else {
+            chuva.muted = false;
+            chuvabotao.style.opacity = "100%";
+            chuvarange.style.display = 'grid';
+        }
+    }
+    if (e.target == ventobotao) {
+        if (vento.muted == false) {
+            vento.muted = true;
+            ventobotao.style.opacity = "50%";
+            ventorange.style.display = 'none';
+        }
+        else {
+            vento.muted = false;
+            ventobotao.style.opacity = "100%";
+            ventorange.style.display = 'grid';
+        }
+    }
+    if (e.target == ondasbotao) {
+        if (ondas.muted == false) {
+            ondas.muted = true;
+            ondasbotao.style.opacity = "50%";
+            ondasrange.style.display = 'none';
+        }
+        else {
+            ondas.muted = false;
+            ondasbotao.style.opacity = "100%";
+            ondasrange.style.display = 'grid';
+        }
+    }
+    if (e.target == trovaobotao) {
+        if (trovao.muted == false) {
+            trovao.muted = true;
+            trovaobotao.style.opacity = "50%";
+            trovaorange.style.display = 'none';
+        }
+        else {
+            trovao.muted = false;
+            trovaobotao.style.opacity = "100%";
+            trovaorange.style.display = 'grid';
+        }
+    }
+})
+
+// evento de volume
+document.addEventListener('mousemove', e=> {
+    chuva.volume = chuvarange.value/100;
+    vento.volume = ventorange.value/100;
+    ondas.volume = ondasrange.value/100;
+    trovao.volume = trovaorange.value/100;
+
+})
     </script>
 </body>
 </html>

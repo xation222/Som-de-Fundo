@@ -1,0 +1,54 @@
+@charset "UTF-8";
+body {
+    background-color: rgba(42, 132, 165, 0.366);
+    background-image: linear-gradient(rgba(42, 132, 165, 0.366), rgb(3, 0, 23));
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow-y: hidden;
+}
+header {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    opacity: 50%;
+    height: 10%;
+}
+div {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 70px;
+    opacity: 50%;
+}
+audio {
+    display: none;
+}
+.range {
+    width: 70px;
+    display: none;
+}
+#chuvabotao {
+    background-image: url(imagens/chuva.png);
+}
+#ventobotao {
+    background-image: url(imagens/vento.png);
+}
+#ondasbotao {
+    background-image: url(imagens/ondas.png);
+}
+#trovaobotao {
+    background-image: url(imagens/trovao.png);
+}
+#entradadeaudio {
+    display: none;
+}
+#botoes {
+    text-align: center;
+}
+article {
+    padding-left: 40%;
+    padding-top: 20%;
+}
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
