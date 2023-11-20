@@ -12,10 +12,10 @@
 <body>
     <header>
         <h1>Sente e Relaxe</h1>
+        <p>Click nos icones para ouvir o som, misture, combine, desfrute.</p>
     </header>
     <main>
-        <section id="botoes">
-            <article></article>
+        <div>
             <article>
                 <div id="chuvabotao"></div>
                 <input type="range" id="chuvarange" class="range">
@@ -24,8 +24,8 @@
                 <div id="ventobotao"></div>
                 <input type="range" id="ventorange" class="range">
             </article>
-            <article></article>
-            <article></article>
+        </div>
+        <div>
             <article>
                 <div id="ondasbotao"></div>
                 <input type="range" id="ondasrange" class="range">
@@ -34,8 +34,7 @@
                 <div id="trovaobotao"></div>
                 <input type="range" id="trovaorange" class="range">
             </article>
-            <article></article>
-        </section>
+        </div>
         <section id="entradadeaudio">
                 <audio 
                     id="chuva" 
@@ -73,14 +72,14 @@
     </main>
     <script>
 // declaração de variáveis
-var chuvabotao = document.querySelector("#chuvabotao");
-var chuva = document.querySelector('audio#chuva');
-var ventobotao = document.querySelector("#ventobotao");
-var vento = document.querySelector("#vento");
-var ondasbotao = document.querySelector('#ondasbotao');
-var ondas = document.querySelector('#ondas');
-var trovaobotao = document.querySelector('#trovaobotao');
-var trovao = document.querySelector('#trovao');
+const chuvabotao = document.querySelector("#chuvabotao");
+const chuva = document.querySelector('audio#chuva');
+const ventobotao = document.querySelector("#ventobotao");
+const vento = document.querySelector("#vento");
+const ondasbotao = document.querySelector('#ondasbotao');
+const ondas = document.querySelector('#ondas');
+const trovaobotao = document.querySelector('#trovaobotao');
+const trovao = document.querySelector('#trovao');
 
 console.log(chuva, chuvabotao);
 
