@@ -1,8 +1,6 @@
 @charset "UTF-8";
 html, body {
     margin: 0;
-}
-body {
     background-color: rgba(42, 132, 165, 0.366);
     background-image: linear-gradient(rgba(42, 132, 165, 0.366), rgb(3, 0, 23));
     background-repeat: no-repeat;
@@ -20,7 +18,7 @@ header {
 main {
     display: flex;
     justify-content: space-evenly;
-    height: 330px;
+    height: 300px;
 }
 .inv {
     display: none;
@@ -90,6 +88,9 @@ audio {
         width: 160px;
         display: none;
     }
+    main {
+        height: 600px;
+    }
 }
 @media (min-width: 1023px) {
     div {
@@ -102,5 +103,8 @@ audio {
     .range {
         width: 95px;
         display: none;
+    }
+    main {
+        height: 420px;
     }
 }
