@@ -7,34 +7,33 @@
     <link rel="shortcut icon" href="imagens/icone.ico" type="image/x-icon">
     <title>Som de Fundo</title>
     <link rel="stylesheet" href="style.css" media="all">
-    <script src="script.js"></script>
 </head>
-<body>
+<body id="corpo">
     <header>
-        <h1>Sente e Relaxe</h1>
+        <h1>Personalize Seu Ambiente Sonoro</h1>
         <p>Click nos icones para ouvir o som, misture, combine, desfrute.</p>
     </header>
     <main>
-        <div>
-            <article>
-                <div id="chuvabotao"></div>
+        <section class="botoes">
+            <div class="botao">
+                <img src="imagens/chuva.png" id="chuvabotao"></img>
                 <input type="range" id="chuvarange" class="range">
-            </article>
-            <article>
-                <div id="ventobotao"></div>
+            </div>
+            <div class="botao">
+                <img src="imagens/vento.png" id="ventobotao"></img>
                 <input type="range" id="ventorange" class="range">
-            </article>
-        </div>
-        <div>
-            <article>
-                <div id="ondasbotao"></div>
+            </div>
+        </section>
+        <section class="botoes">
+            <div class="botao">
+                <img src="imagens/ondas.png" id="ondasbotao"></img>
                 <input type="range" id="ondasrange" class="range">
-            </article>
-            <article>
-                <div id="trovaobotao"></div>
+            </div>
+            <div class="botao">
+                <img src="imagens/trovao.png" id="trovaobotao"></img>
                 <input type="range" id="trovaorange" class="range">
-            </article>
-        </div>
+            </div>
+        </section>
         <section id="entradadeaudio">
                 <audio 
                     id="chuva" 
@@ -80,8 +79,8 @@ const ondasbotao = document.querySelector('#ondasbotao');
 const ondas = document.querySelector('#ondas');
 const trovaobotao = document.querySelector('#trovaobotao');
 const trovao = document.querySelector('#trovao');
-
-console.log(chuva, chuvabotao);
+const corpo = document.getElementById("corpo")
+var botaoativo = 0;
 
 // evento de click
 document.addEventListener('click', e => {
@@ -90,11 +89,13 @@ document.addEventListener('click', e => {
             chuva.muted = true;
             chuvabotao.style.opacity = "50%";
             chuvarange.style.display = 'none';
+            botaoativo -= 1;
         }
         else {
             chuva.muted = false;
             chuvabotao.style.opacity = "100%";
             chuvarange.style.display = 'grid';
+            botaoativo += 1;
         }
     }
     if (e.target == ventobotao) {
@@ -102,11 +103,13 @@ document.addEventListener('click', e => {
             vento.muted = true;
             ventobotao.style.opacity = "50%";
             ventorange.style.display = 'none';
+            botaoativo -= 1;
         }
         else {
             vento.muted = false;
             ventobotao.style.opacity = "100%";
             ventorange.style.display = 'grid';
+            botaoativo += 1;
         }
     }
     if (e.target == ondasbotao) {
@@ -114,11 +117,13 @@ document.addEventListener('click', e => {
             ondas.muted = true;
             ondasbotao.style.opacity = "50%";
             ondasrange.style.display = 'none';
+            botaoativo -= 1;
         }
         else {
             ondas.muted = false;
             ondasbotao.style.opacity = "100%";
             ondasrange.style.display = 'grid';
+            botaoativo += 1;
         }
     }
     if (e.target == trovaobotao) {
@@ -126,12 +131,42 @@ document.addEventListener('click', e => {
             trovao.muted = true;
             trovaobotao.style.opacity = "50%";
             trovaorange.style.display = 'none';
+            botaoativo -= 1;
         }
         else {
             trovao.muted = false;
             trovaobotao.style.opacity = "100%";
             trovaorange.style.display = 'grid';
+            botaoativo += 1;
         }
+    }
+    if (botaoativo == 1) {
+        if (chuva.muted == false) {
+            corpo.style.backgroundColor = "#63AADF";
+        }
+        if (vento.muted == false) {
+            corpo.style.backgroundColor = "#3FE0AF";
+        }
+        if (ondas.muted == false) {
+            corpo.style.backgroundColor = "#3F65E0";
+        }
+        if (trovao.muted == false) {
+            corpo.style.backgroundColor = "#212121";
+        }
+    }
+    if (botaoativo == 0) {
+        corpo.style.backgroundColor = "aliceblue";
+    }
+    if (botaoativo == 2) {
+        corpo.style.backgroundColor = "#112b1e";
+    }
+    if (botaoativo == 3)
+    {
+        corpo.style.backgroundColor = "#59187e";
+    }
+    if (botaoativo == 4)
+    {
+        corpo.style.backgroundColor = "#000b1d";
     }
 })
 
@@ -141,8 +176,9 @@ document.addEventListener('mousemove', e=> {
     vento.volume = ventorange.value/100;
     ondas.volume = ondasrange.value/100;
     trovao.volume = trovaorange.value/100;
-
 })
+
+
     </script>
 </body>
 </html>
