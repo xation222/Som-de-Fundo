@@ -5,7 +5,7 @@ html, body {
 }
 body {
     background-color: aliceblue;
-    background-image: url("imagens/fundo-alternavel.png");
+    background-image: url("imagens/fundoalternavel.png");
     background-repeat: no-repeat;
     background-size: 100%;
     transition: background-color 2s ease;
