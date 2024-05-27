@@ -9,28 +9,28 @@
     <link rel="stylesheet" href="style.css" media="all">
 </head>
 <body id="corpo">
-    <header>
+    <header id="texto-muda-cor">
         <h1>Personalize Seu Ambiente Sonoro</h1>
         <p>Click nos icones para ouvir o som, misture, combine, desfrute.</p>
     </header>
     <main>
         <section class="botoes">
             <div class="botao">
-                <img src="imagens/chuva.png" id="chuvabotao"></img>
+                <img src="imagens/chuva.png" id="chuvabotao" class="imagem"></img>
                 <input type="range" id="chuvarange" class="range">
             </div>
             <div class="botao">
-                <img src="imagens/vento.png" id="ventobotao"></img>
+                <img src="imagens/vento.png" id="ventobotao" class="imagem"></img>
                 <input type="range" id="ventorange" class="range">
             </div>
         </section>
         <section class="botoes">
             <div class="botao">
-                <img src="imagens/ondas.png" id="ondasbotao"></img>
+                <img src="imagens/ondas.png" id="ondasbotao" class="imagem"></img>
                 <input type="range" id="ondasrange" class="range">
             </div>
             <div class="botao">
-                <img src="imagens/trovao.png" id="trovaobotao"></img>
+                <img src="imagens/trovao.png" id="trovaobotao" class="imagem"></img>
                 <input type="range" id="trovaorange" class="range">
             </div>
         </section>
@@ -79,8 +79,12 @@ const ondasbotao = document.querySelector('#ondasbotao');
 const ondas = document.querySelector('#ondas');
 const trovaobotao = document.querySelector('#trovaobotao');
 const trovao = document.querySelector('#trovao');
-const corpo = document.getElementById("corpo")
+const corpo = document.getElementById("corpo");
+const textomudacor = document.getElementById("texto-muda-cor");
+const classeIMG = document.querySelectorAll(".imagem");
 var botaoativo = 0;
+
+console.log(classeIMG)
 
 // evento de click
 document.addEventListener('click', e => {
@@ -142,31 +146,43 @@ document.addEventListener('click', e => {
     }
     if (botaoativo == 1) {
         if (chuva.muted == false) {
-            corpo.style.backgroundColor = "#63AADF";
+            corpo.style.backgroundColor = "#92c4e9";
         }
         if (vento.muted == false) {
-            corpo.style.backgroundColor = "#3FE0AF";
+            corpo.style.backgroundColor = "#79eac7";
         }
         if (ondas.muted == false) {
-            corpo.style.backgroundColor = "#3F65E0";
+            corpo.style.backgroundColor = "#7994ea";
         }
         if (trovao.muted == false) {
-            corpo.style.backgroundColor = "#212121";
+            corpo.style.backgroundColor = "#8b5ea5";
         }
     }
     if (botaoativo == 0) {
         corpo.style.backgroundColor = "aliceblue";
+        textomudacor.style.color = "black";
     }
     if (botaoativo == 2) {
-        corpo.style.backgroundColor = "#112b1e";
+        corpo.style.backgroundColor = "#596b62";
+        textomudacor.style.color = "black";
     }
     if (botaoativo == 3)
     {
-        corpo.style.backgroundColor = "#59187e";
+        corpo.style.backgroundColor = "#30464b";
+        textomudacor.style.color = "black";
+        for (var i = 0; i < classeIMG.length; i++) {
+            classeIMG[i].style.backgroundColor = "rgba(240, 248, 255, 0.0";
+            classeIMG[i].style.boxShadow = "none";
+        }
     }
     if (botaoativo == 4)
     {
         corpo.style.backgroundColor = "#000b1d";
+        textomudacor.style.color = "aliceblue";
+        for (var i = 0; i < classeIMG.length; i++) {
+            classeIMG[i].style.backgroundColor = "rgba(240, 248, 255, 0.4";
+            classeIMG[i].style.boxShadow = "inset 0 0 10px white, 0 0 10px white";
+        }
     }
 })
 
@@ -177,8 +193,6 @@ document.addEventListener('mousemove', e=> {
     ondas.volume = ondasrange.value/100;
     trovao.volume = trovaorange.value/100;
 })
-
-
     </script>
 </body>
 </html>
