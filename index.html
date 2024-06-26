@@ -84,8 +84,6 @@ const textomudacor = document.getElementById("texto-muda-cor");
 const classeIMG = document.querySelectorAll(".imagem");
 var botaoativo = 0;
 
-console.log(classeIMG)
-
 // evento de click
 document.addEventListener('click', e => {
     if (e.target == chuvabotao) {
@@ -193,6 +191,28 @@ document.addEventListener('mousemove', e=> {
     ondas.volume = ondasrange.value/100;
     trovao.volume = trovaorange.value/100;
 })
+
+// touchscreen
+const rangeInput = document.querySelectorAll('.range');
+
+
+for (let i = 0; i < rangeInput.length; i++) {
+
+    rangeInput[i].addEventListener('touchstart', function(e) {
+    e.preventDefault();
+}, { passive: true });
+
+    rangeInput[i].addEventListener('touchmove', function(e) {
+    const touch = e.touches[0];
+    const value = (touch.clientX - rangeInput[i].getBoundingClientRect().left) / rangeInput[i].offsetWidth * 100;
+    rangeInput[i].value = value;
+
+    chuva.volume = chuvarange.value/100;
+    vento.volume = ventorange.value/100;
+    ondas.volume = ondasrange.value/100;
+    trovao.volume = trovaorange.value/100;
+})}
+
     </script>
 </body>
 </html>

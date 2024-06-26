@@ -45,6 +45,7 @@ audio {
 .range {
     padding: 10px 0px;
     width: 70px;
+    touch-action: manipulation;
     display: none;
 }
 #entradadeaudio {
