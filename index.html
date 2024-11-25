@@ -71,33 +71,33 @@
     </main>
     <script>
 // declaração de variáveis
-const chuvabotao = document.querySelector("#chuvabotao");
-const chuva = document.querySelector('audio#chuva');
-const ventobotao = document.querySelector("#ventobotao");
-const vento = document.querySelector("#vento");
+const chuvabotao = document.querySelector("#chuvabotao"); // imagem
+const chuva = document.querySelector('audio#chuva'); // audio
+const ventobotao = document.querySelector("#ventobotao"); 
+const vento = document.querySelector("#vento"); 
 const ondasbotao = document.querySelector('#ondasbotao');
 const ondas = document.querySelector('#ondas');
 const trovaobotao = document.querySelector('#trovaobotao');
 const trovao = document.querySelector('#trovao');
-const corpo = document.getElementById("corpo");
-const textomudacor = document.getElementById("texto-muda-cor");
-const classeIMG = document.querySelectorAll(".imagem");
+const corpo = document.getElementById("corpo"); // body
+const textomudacor = document.getElementById("texto-muda-cor"); // header
+const classeIMG = document.querySelectorAll(".imagem"); // todas as imagens
 var botaoativo = 0;
 
 // evento de click
 document.addEventListener('click', e => {
     if (e.target == chuvabotao) {
         if (chuva.muted == false) {
-            chuva.muted = true;
-            chuvabotao.style.opacity = "50%";
-            chuvarange.style.display = 'none';
-            botaoativo -= 1;
+            chuva.muted = true;  // volume mutado
+            chuvabotao.style.opacity = "50%"; // imagem fica apagada quando mutada
+            chuvarange.style.display = 'none';  // controle de volume some
+            botaoativo -= 1; // controle de quantos botões ativos
         }
         else {
-            chuva.muted = false;
-            chuvabotao.style.opacity = "100%";
-            chuvarange.style.display = 'grid';
-            botaoativo += 1;
+            chuva.muted = false; // volume ativo
+            chuvabotao.style.opacity = "100%"; // imagem em destaque quando volume ativo
+            chuvarange.style.display = 'grid'; // controle de volume aparece
+            botaoativo += 1; // controle de quantos botões ativos
         }
     }
     if (e.target == ventobotao) {
@@ -193,25 +193,19 @@ document.addEventListener('mousemove', e=> {
 })
 
 // touchscreen
-const rangeInput = document.querySelectorAll('.range');
-
-
-for (let i = 0; i < rangeInput.length; i++) {
-
-    rangeInput[i].addEventListener('touchstart', function(e) {
-    e.preventDefault();
-}, { passive: true });
-
-    rangeInput[i].addEventListener('touchmove', function(e) {
-    const touch = e.touches[0];
-    const value = (touch.clientX - rangeInput[i].getBoundingClientRect().left) / rangeInput[i].offsetWidth * 100;
-    rangeInput[i].value = value;
-
+document.addEventListener('touchmove', function(e) { // atualização pelo movimento
     chuva.volume = chuvarange.value/100;
     vento.volume = ventorange.value/100;
     ondas.volume = ondasrange.value/100;
     trovao.volume = trovaorange.value/100;
-})}
+})
+
+document.addEventListener('touchend', function(e) { // atualização pelo ultimo toque do touch
+    chuva.volume = chuvarange.value/100;
+    vento.volume = ventorange.value/100;
+    ondas.volume = ondasrange.value/100;
+    trovao.volume = trovaorange.value/100;
+})
 
     </script>
 </body>
